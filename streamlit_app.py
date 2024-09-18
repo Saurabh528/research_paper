@@ -285,6 +285,8 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
             st.write(f"**{key}**")
             for item in value:
                 st.write(f"- {item}")
+
+    st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
                 
     
     
