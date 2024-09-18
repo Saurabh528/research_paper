@@ -169,7 +169,34 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     for key, value in buttons_content.items():
         if key not in st.session_state.button_state:
             st.session_state.button_state[key] = False
+        
 
+        m = st.markdown("""
+        <style>
+        div.stButton > button:first-child {
+            background-color: white;
+            color: black;
+            height: 3em;
+            width: 12em;
+            border-radius:10px;
+            border:3px solid #000000;
+            font-size: 20px;
+            font-weight: bold;
+            margin: auto;
+            display: block;
+        }
+        
+        div.stButton > button:hover {
+            background: linear-gradient(to bottom, #ffcccc 5%, #ff9999 100%);
+            background-color: #ffcccc;
+        }
+        
+        div.stButton > button:active {
+            position:relative;
+            top:3px;
+        }
+        </style>
+        """, unsafe_allow_html=True)
         if st.button(key):
             st.session_state.button_state[key] = not st.session_state.button_state[key]
 
