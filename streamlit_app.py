@@ -11,7 +11,7 @@ ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
 #api_key_openai = os.getenv("OPENAI_API_KEY") 
 #st.write(api_key_openai)
 #Initialize the OpenAI client with your API key
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=openai.api_key)
 
