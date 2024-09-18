@@ -7,10 +7,10 @@ import os
 # Set your Assistant ID here
 ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
 
-openai.api_key = os.getenv("OPENAI_API_KEY") 
+api_key_openai = os.getenv("OPENAI_API_KEY") 
 
 # Initialize the OpenAI client with your API key
-client = OpenAI(api_key=openai.api_key)
+client = OpenAI(api_key=api_key_openai)
 
 st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
 
