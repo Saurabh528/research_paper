@@ -39,8 +39,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=openai.api_key)
 
-
+st.markdown('<p></p>', unsafe_allow_html = True)
+st.markdown('<p></p>', unsafe_allow_html = True)
+st.markdown('<p></p>', unsafe_allow_html = True)
 # Button to reset session state on rerun
+
 if st.button("Reset App"):
     st.session_state.clear()
 
