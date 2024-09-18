@@ -3,12 +3,14 @@ import time
 import re
 import ast
 from openai import OpenAI
-
+import os
 # Set your Assistant ID here
 ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
 
+openai.api_key = os.getenv("OPENAI_API_KEY") 
+
 # Initialize the OpenAI client with your API key
-client = OpenAI(api_key="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")
+client = OpenAI(api_key=openai.api_key)
 
 st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
 
