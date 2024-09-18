@@ -12,7 +12,7 @@ from streamlit_markmap import markmap
 ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
 ASSISTANT_ID_MINDMAP = "asst_58ASNnC1dqft28FsazSqjZH6"
 
-st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
+st.set_page_config(page_title="ResearchXtract AI", layout="wide")
 
 # Add a custom title with styling (font, size, background color, padding, etc.)
 st.markdown("""
