@@ -171,6 +171,33 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     #st.write(st.session_state.api_result)
     input_str = st.session_state.api_result
     input_str_mindmap = st.session_state.api_result_mindmap
+    match = re.search(r"mindmap_data\s*=\s*'''(.*?)'''", input_str_mindmap, re.DOTALL)
+    if match:
+        mindmap_data=match.group(1).strip()
+    else:
+        mindmap_data=None
+        
+    st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style="
+        background-color: #FFFFE0; 
+        padding: 10px; 
+        border-radius: 10px;
+        text-align: center; 
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        ">
+        <h1 style='color: red; font-family: Arial, sans-serif; font-weight: bold;'>
+            MINDMAP
+        </h1>
+    </div>
+    """, unsafe_allow_html=True)
+    #st.markdown("<h1 style='text-align: center; color: red;'>MINDMAP</h1>", unsafe_allow_html=True)
+    
+    markmap(mindmap_data, height=400)
+    st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
+
+    
+    
 
     # Parse the API result (already stored) from the session state
     t_p = re.search(r'top_10_points\s*=\s*"([^"]*)"', input_str, re.DOTALL)
@@ -213,11 +240,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
         """, unsafe_allow_html=True)
     st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
 
-    match = re.search(r"mindmap_data\s*=\s*'''(.*?)'''", input_str_mindmap, re.DOTALL)
-    if match:
-        mindmap_data=match.group(1).strip()
-    else:
-        mindmap_data=None
+    
     
     
     #st.title("Mind Map of Uploaded File")
@@ -263,23 +286,8 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
                 st.write(f"- {item}")
                 
     
-    st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
-    st.markdown("""
-    <div style="
-        background-color: #FFFFE0; 
-        padding: 10px; 
-        border-radius: 10px;
-        text-align: center; 
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        ">
-        <h1 style='color: red; font-family: Arial, sans-serif; font-weight: bold;'>
-            MINDMAP
-        </h1>
-    </div>
-    """, unsafe_allow_html=True)
-    #st.markdown("<h1 style='text-align: center; color: red;'>MINDMAP</h1>", unsafe_allow_html=True)
     
-    markmap(mindmap_data, height=400)
+    
 
 
 
