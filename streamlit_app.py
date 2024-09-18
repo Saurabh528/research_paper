@@ -14,7 +14,7 @@ ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 st.write(openai.api_key)
 
-# client = OpenAI(api_key=openai.api_key)
+client = OpenAI(api_key=openai.api_key)
 
 # st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
 
