@@ -155,7 +155,8 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
             <ul style="text-align: left; list-style-position: inside;">{potential_research_ideas}</ul>
         </div>
         """, unsafe_allow_html=True)
-        
+    st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
+
     match = re.search(r"mindmap_data\s*=\s*'''(.*?)'''", input_str_mindmap, re.DOTALL)
     if match:
         mindmap_data=match.group(1).strip()
