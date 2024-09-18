@@ -1,13 +1,16 @@
 import openai
 import streamlit as st
 import time
-import re
+import sys
 import ast
 from openai import OpenAI
 import os
+import re
+from streamlit_markmap import markmap
 
 # Set your Assistant ID here
 ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
+ASSISTANT_ID_MINDMAP = "asst_58ASNnC1dqft28FsazSqjZH6"
 
 st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
 
@@ -19,7 +22,7 @@ os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 openai.api_key = os.getenv("OPENAI_API_KEY") 
 
-st.write(openai.api_key)
+#st.write(openai.api_key)
 
 
 
@@ -70,11 +73,48 @@ if uploaded_file is not None and st.session_state.api_result is None:
     # Store the API result in session state to avoid reruns
     st.session_state.api_result = client.beta.threads.messages.list(thread_id=thread.id).data[0].content[0].text.value
     st.success("Processing Completed!")
+    thread = client.beta.threads.create(
+        messages=[
+            {
+                "role": "user",
+                "content": "Apply the instructions given to the assistant",
+                "attachments": [
+                    {
+                        "file_id": file.id,
+                        "tools": [{"type": "code_interpreter"}]
+                    }
+                ]
+            }
+        ]
+    )
+    run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id=ASSISTANT_ID_MINDMAP)
+
+    # Wait for the run to complete
+    while run.status != "completed":
+        run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+        #st.write(f"Run Status: {run.status}")
+        time.sleep(1)
+
+    # Display final status
+    st.write(f"Generation Completed!")
+
+    # Get the assistant's response
+    message_response = client.beta.threads.messages.list(thread_id=thread.id)
+    messages = message_response.data
+
+    # Print the latest message (response)
+    latest_message = messages[0]
+    
+    st.session_state.api_result_mindmap =latest_message.content[0].text.value
+    
+    
+    
 
 # If the API result is already available in session state
-if st.session_state.api_result is not None:
+if st.session_state.api_result is not None and st.session_state.api_result_mindmap is not None:
     #st.write(st.session_state.api_result)
     input_str = st.session_state.api_result
+    input_str_mindmap = st.session_state.api_result_mindmap
 
     # Parse the API result (already stored) from the session state
     t_p = re.search(r'top_10_points\s*=\s*"([^"]*)"', input_str, re.DOTALL)
@@ -115,6 +155,16 @@ if st.session_state.api_result is not None:
             <ul style="text-align: left; list-style-position: inside;">{potential_research_ideas}</ul>
         </div>
         """, unsafe_allow_html=True)
+        
+    match = re.search(r"mindmap_data\s*=\s*'''(.*?)'''", input_str_mindmap, re.DOTALL)
+    if match:
+        mindmap_data=match.group(1).strip()
+    else:
+        mindmap_data=None
+    
+    
+    #st.title("Mind Map of Uploaded File")
+    markmap(mindmap_data, height=400)
 
     # Display buttons and handle interactions
     for key, value in buttons_content.items():
