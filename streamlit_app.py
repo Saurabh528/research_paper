@@ -15,7 +15,7 @@ ASSISTANT_ID_MINDMAP = "asst_58ASNnC1dqft28FsazSqjZH6"
 st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
 
 # Title for the app
-st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Research Paper Analyzer</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>Research Paper Analyzer</h1>", unsafe_allow_html=True)
 
 
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
