@@ -135,7 +135,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     with col1:
         st.markdown(f"""
         <div style="background-color: #f9f9f9; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
-            <h3 style="text-align: center; color: #4CAF50;">Top 10 Points</h3>
+            <h3 style="text-align: center; color: red;">Top 10 Points</h3>
             <ul style="text-align: left; list-style-position: inside;">{top_10_points}</ul>
         </div>
         """, unsafe_allow_html=True)
@@ -143,7 +143,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     with col2:
         st.markdown(f"""
         <div style="background-color: #f9f9f9; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
-            <h3 style="text-align: center; color: #4CAF50;">Achievements</h3>
+            <h3 style="text-align: center; color: green;">Achievements/Innovation</h3>
             <ul style="text-align: left; list-style-position: inside;">{top_achievements}</ul>
         </div>
         """, unsafe_allow_html=True)
@@ -151,7 +151,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     with col3:
         st.markdown(f"""
         <div style="background-color: #f9f9f9; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
-            <h3 style="text-align: center; color: #4CAF50;">Research Ideas</h3>
+            <h3 style="text-align: center; color: blue;">Potential Research Ideas</h3>
             <ul style="text-align: left; list-style-position: inside;">{potential_research_ideas}</ul>
         </div>
         """, unsafe_allow_html=True)
