@@ -17,7 +17,7 @@ st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
 # Add a custom title with styling (font, size, background color, padding, etc.)
 st.markdown("""
     <div style="
-        background-color: #f2f2f2; 
+        background-color: #ADD8E6; 
         padding: 10px; 
         border-radius: 10px;
         text-align: center; 
@@ -264,8 +264,21 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
                 
     
     st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
-            
-    st.markdown("<h1 style='text-align: center; color: red;'>MINDMAP</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div style="
+        background-color: #FFFFE0; 
+        padding: 10px; 
+        border-radius: 10px;
+        text-align: center; 
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        ">
+        <h1 style='color: red; font-family: Arial, sans-serif; font-weight: bold;'>
+            MINDMAP
+        </h1>
+    </div>
+    """, unsafe_allow_html=True)
+    #st.markdown("<h1 style='text-align: center; color: red;'>MINDMAP</h1>", unsafe_allow_html=True)
+    
     markmap(mindmap_data, height=400)
 
 
