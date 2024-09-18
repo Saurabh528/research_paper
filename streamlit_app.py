@@ -206,6 +206,9 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
             for item in value:
                 st.write(f"- {item}")
                 
+    
+    st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
+            
     st.markdown("<h1 style='text-align: center; color: red;'>MINDMAP</h1>", unsafe_allow_html=True)
     markmap(mindmap_data, height=400)
 
