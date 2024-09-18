@@ -134,7 +134,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     # Display the parsed results
     with col1:
         st.markdown(f"""
-        <div style="background-color: #f9f9f9; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
+        <div style="background-color: #F5F5DC; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
             <h3 style="text-align: center; color: red;">Top 10 Insights</h3>
             <ul style="text-align: left; list-style-position: inside;">{top_10_points}</ul>
         </div>
@@ -142,7 +142,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
 
     with col2:
         st.markdown(f"""
-        <div style="background-color: #f9f9f9; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
+        <div style="background-color: #F5F5DC; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
             <h3 style="text-align: center; color: green;">Achievements/Innovations</h3>
             <ul style="text-align: left; list-style-position: inside;">{top_achievements}</ul>
         </div>
@@ -150,7 +150,7 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
 
     with col3:
         st.markdown(f"""
-        <div style="background-color: #f9f9f9; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
+        <div style="background-color: #F5F5DC; border-radius: 10px; padding: 15px; border: 1px solid #ddd; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
             <h3 style="text-align: center; color: blue;">Potential Research Ideas</h3>
             <ul style="text-align: left; list-style-position: inside;">{potential_research_ideas}</ul>
         </div>
