@@ -164,7 +164,6 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     
     
     #st.title("Mind Map of Uploaded File")
-    markmap(mindmap_data, height=400)
 
     # Display buttons and handle interactions
     for key, value in buttons_content.items():
@@ -178,3 +177,9 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
             st.write(f"**{key}**")
             for item in value:
                 st.write(f"- {item}")
+                
+    st.title("MINDMAP")
+    markmap(mindmap_data, height=400)
+
+
+
