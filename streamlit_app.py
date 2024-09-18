@@ -94,7 +94,7 @@ if uploaded_file is not None and st.session_state.api_result is None:
         
         # Update the progress bar and status text
         progress_bar.progress(progress)
-        status_text.text(f"Digging in ... {progress}%")
+        status_text.text(f"Digging in ...")
         
         # Simulate the check by retrieving the run status again
         run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
@@ -141,7 +141,7 @@ if uploaded_file is not None and st.session_state.api_result is None:
         
         # Update the progress bar and status text
         progress_bar.progress(progress)
-        status_text.text(f"Generating Mind Map of Uploaded Paper ... {progress}%")
+        status_text.text(f"Generating Mind Map of Uploaded Paper ...")
         
         # Simulate the check by retrieving the run status again
         run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
