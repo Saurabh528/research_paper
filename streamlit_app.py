@@ -78,15 +78,38 @@ if uploaded_file is not None and st.session_state.api_result is None:
     )
 
     run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id=ASSISTANT_ID)
+    progress_bar = st.progress(0)
+    status_text = st.empty()
 
-    # Wait for the run to complete
+
+    progress = 0
+    max_time = 100  # Maximum progress steps, adjust as needed
+
+
     while run.status != "completed":
+        # Increment progress step
+        progress += 1
+        if progress >= max_time:
+            progress = max_time - 1  # Keep progress under 100 until completion
+        
+        # Update the progress bar and status text
+        progress_bar.progress(progress)
+        status_text.text(f"Digging in ... {progress}%")
+        
+        # Simulate the check by retrieving the run status again
         run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+        
+        # Sleep for 1 second between checks
         time.sleep(1)
+
+
+    progress_bar.progress(100)
+
+    
 
     # Store the API result in session state to avoid reruns
     st.session_state.api_result = client.beta.threads.messages.list(thread_id=thread.id).data[0].content[0].text.value
-    st.success("Processing Completed!")
+    st.success("Succesfully Retrieved The Insights !")
     thread = client.beta.threads.create(
         messages=[
             {
@@ -102,15 +125,34 @@ if uploaded_file is not None and st.session_state.api_result is None:
         ]
     )
     run = client.beta.threads.runs.create(thread_id=thread.id, assistant_id=ASSISTANT_ID_MINDMAP)
+    progress_bar = st.progress(0)
+    status_text = st.empty()
 
-    # Wait for the run to complete
+
+    progress = 0
+    max_time = 100  # Maximum progress steps, adjust as needed
+
+
     while run.status != "completed":
+        # Increment progress step
+        progress += 1
+        if progress >= max_time:
+            progress = max_time - 1  # Keep progress under 100 until completion
+        
+        # Update the progress bar and status text
+        progress_bar.progress(progress)
+        status_text.text(f"Generating Mind Map of Uploaded Paper ... {progress}%")
+        
+        # Simulate the check by retrieving the run status again
         run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
-        #st.write(f"Run Status: {run.status}")
+        
+        # Sleep for 1 second between checks
         time.sleep(1)
 
-    # Display final status
-    st.write(f"Generation Completed!")
+
+    progress_bar.progress(100)
+
+    
 
     # Get the assistant's response
     message_response = client.beta.threads.messages.list(thread_id=thread.id)
