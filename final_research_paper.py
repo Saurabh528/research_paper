@@ -62,7 +62,7 @@ if uploaded_file is not None and st.session_state.api_result is None:
 
 # If the API result is already available in session state
 if st.session_state.api_result is not None:
-    st.write(st.session_state.api_result)
+    #st.write(st.session_state.api_result)
     input_str = st.session_state.api_result
 
     # Parse the API result (already stored) from the session state
