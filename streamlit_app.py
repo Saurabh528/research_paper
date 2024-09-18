@@ -9,6 +9,12 @@ import os
 # Set your Assistant ID here
 ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
 
+st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
+
+# Title for the app
+st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Research Paper Analyzer</h1>", unsafe_allow_html=True)
+
+
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 openai.api_key = os.getenv("OPENAI_API_KEY") 
@@ -19,10 +25,6 @@ st.write(openai.api_key)
 
 client = OpenAI(api_key=openai.api_key)
 
-st.set_page_config(page_title="Research Paper Analyzer", layout="wide")
-
-# Title for the app
-st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Research Paper Analyzer</h1>", unsafe_allow_html=True)
 
 # Button to reset session state on rerun
 if st.button("Reset App"):
