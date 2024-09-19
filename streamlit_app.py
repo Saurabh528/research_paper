@@ -85,8 +85,17 @@ if uploaded_file is not None and st.session_state.api_result is None:
 
         progress = 0
         max_time = 100  # Maximum progress steps, adjust as needed
+        timeout = 90  # Timeout set to 90 seconds
+        start_time = time.time() 
 
         while run.status != "completed":
+            elapsed_time = time.time() - start_time
+            if elapsed_time > timeout:
+                # Stop the process if it takes more than 90 seconds and show an error
+                st.error("Server error occurred. Please retry. Reset The App")
+                st.stop()  # This stops the app execution
+                break  # Exit the loop
+                
             # Increment progress step
             progress += 1
             if progress >= max_time:
@@ -129,8 +138,17 @@ if uploaded_file is not None and st.session_state.api_result is None:
 
         progress = 0
         max_time = 100  # Maximum progress steps, adjust as needed
+        timeout = 90  # Timeout set to 90 seconds
+        start_time = time.time()
 
         while run.status != "completed":
+            elapsed_time = time.time() - start_time
+            if elapsed_time > timeout:
+                # Stop the process if it takes more than 90 seconds and show an error
+                st.error("Server error occurred. Please retry. Reset The App")
+                st.stop()  # This stops the app execution
+                break  # Exit the loop
+                
             # Increment progress step
             progress += 1
             if progress >= max_time:
