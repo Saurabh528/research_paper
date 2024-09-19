@@ -165,8 +165,8 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
     try:
         input_str = st.session_state.api_result
         input_str_mindmap = st.session_state.api_result_mindmap
-        #st.write(input_str)
-        #st.write(input_str_mindmap)
+        st.write(input_str)
+        st.write(input_str_mindmap)
         match = re.search(r"mindmap_data\s*=\s*'''(.*?)'''", input_str_mindmap, re.DOTALL)
         mindmap_data = match.group(1).strip() if match else None
 
