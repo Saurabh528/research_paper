@@ -33,7 +33,7 @@ os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-#st.write(openai.api_key)
+st.write(openai.api_key)
 
 try:
     client = OpenAI(api_key=openai.api_key)
