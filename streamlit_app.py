@@ -192,14 +192,26 @@ if st.session_state.api_result is not None and st.session_state.api_result_mindm
         st.markdown("<hr style='border: 2px solid black;'>", unsafe_allow_html=True)
 
         # Parse the API result (already stored) from the session state
-        t_p = re.search(r'top_10_points\s*=\s*"([^"]*)"', input_str, re.DOTALL)
+        # t_p = re.search(r'top_10_points\s*=\s*"([^"]*)"', input_str, re.DOTALL)
+        # top_10_points = t_p.group(1).strip() if t_p else "No data available"
+
+        # t_a = re.search(r'top_achievements\s*=\s*"([^"]*)"', input_str, re.DOTALL)
+        # top_achievements = t_a.group(1).strip() if t_a else "No data available"
+
+        # p_r_s = re.search(r'potential_research_ideas\s*=\s*"([^"]*)"', input_str, re.DOTALL)
+        # potential_research_ideas = p_r_s.group(1).strip() if p_r_s else "No data available"
+
+        t_p = re.search(r'top_10_points\s*=\s*["\'"]{1,3}(.*?)["\'"]{1,3}', input_str, re.DOTALL)
         top_10_points = t_p.group(1).strip() if t_p else "No data available"
 
-        t_a = re.search(r'top_achievements\s*=\s*"([^"]*)"', input_str, re.DOTALL)
+        t_a = re.search(r'top_achievements\s*=\s*["\'"]{1,3}(.*?)["\'"]{1,3}', input_str, re.DOTALL)
         top_achievements = t_a.group(1).strip() if t_a else "No data available"
 
-        p_r_s = re.search(r'potential_research_ideas\s*=\s*"([^"]*)"', input_str, re.DOTALL)
+        p_r_s = re.search(r'potential_research_ideas\s*=\s*["\'"]{1,3}(.*?)["\'"]{1,3}', input_str, re.DOTALL)
         potential_research_ideas = p_r_s.group(1).strip() if p_r_s else "No data available"
+
+
+
 
         b_c = re.search(r'buttons_content\s*=\s*{(.|\n)*?}', input_str)
         buttons_content = ast.literal_eval(b_c.group(0).split('=', 1)[1].strip()) if b_c else {}
