@@ -24,7 +24,7 @@ st.markdown("""
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         ">
         <h1 style='color: #4B4B4B; font-family: Arial, sans-serif; font-weight: bold;'>
-            ResearchXtract AI
+            ResearchXtract 
         </h1>
     </div>
     """, unsafe_allow_html=True)
