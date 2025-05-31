@@ -9,8 +9,8 @@ import re
 from streamlit_markmap import markmap
 
 # Set your Assistant ID here
-ASSISTANT_ID = "asst_M87XGtBQDkk428dUOPSCZ0DY"
-ASSISTANT_ID_MINDMAP = "asst_58ASNnC1dqft28FsazSqjZH6"
+ASSISTANT_ID = "asst_tYBhcAT8dpsBQdAQvogBGkkM"
+ASSISTANT_ID_MINDMAP = "asst_k28cOSFTRsb4ucRU4TqOrV7i"
 
 st.set_page_config(page_title="ResearchXtract AI", layout="wide")
 
